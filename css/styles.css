@@ -1,0 +1,55 @@
+body {
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+}
+
+.card {
+    background-color: white;
+}
+
+.text-primary-custom {
+    color: #2255A4;
+}
+
+.text-coral {
+    color: #FF6F61;
+}
+
+.text-secondary-custom {
+    color: #6c757d; 
+}
+
+.bg-light-custom {
+    background-color: #81D4FA;
+}
+
+
+.hero-section {
+    min-height: 80vh;
+    background-color: #FFFFFF; 
+}
+
+
+.btn-cta {
+    background-color: #00BFA5;
+    color: #FFFFFF;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #00a896; 
+    transform: translateY(-2px);
+}
+
+.border {
+    border-color: #E0E0E0 !important;
+}
+
+.highlight-gold {
+    color: #FFD54F;
+}
+
+.card,
+.shadow-sm {
+    border-radius: 1rem;
+}
