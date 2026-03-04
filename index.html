@@ -12,22 +12,33 @@
 <body>
 
     <!-- NAVBAR SIMPLE -->
-    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #ffffff;" data-bs-theme="light">
-    <div class="container">
-        <div id="navMenu" class="collapse navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <nav class="navbar navbar-expand-lg shadow-sm " style="background-color: #ffffff;" data-bs-theme="light">
+        <div class="container">
+            
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <i class="me-2"></i>Regalos <span class="text-primary-chicha">Chicha</span>
+            </a>
+
+            <!-- Boton para colapsar en pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu"  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú -->
+            <div id="navMenu" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Inicio</a>
+                <a class="nav-link active" href="index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#productos">Juan Daniel</a>
+                <a class="nav-link" href="#productos">Juan Daniel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contacto">Jean Paulo</a>
+                <a class="nav-link" href="#contacto">Jean Paulo</a>
                 </li>
             </ul>
+            </div>
         </div>
-    </div>
     </nav>
 
     <!-- HERO SECTION -->
@@ -49,7 +60,7 @@
                     </p>
 
                     <a href="captura.html" 
-                    class="btn btn-cta btn-lg px-4 py-2 rounded-pill shadow mb-4">
+                    class="btn btn-cta btn-lg  py-3 rounded-pill shadow mb-4 ">
                         Empezar a sortear
                     </a>
                     
@@ -81,33 +92,33 @@
             </h2>
 
             <div class="row g-4">
-<div class="col-12 col-sm-6 col-lg-4">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Agregar participantes</h5>
-            <p class="card-text">Sin límite y con almacenamiento en LocalStorage.</p>
-        </div>
-    </div>
-</div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Agregar participantes</h5>
+                        <p class="card-text">Sin límite y con almacenamiento en LocalStorage.</p>
+                    </div>
+                </div>
+            </div>
 
-  <div class="col-12 col-sm-6 col-lg-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Definir exclusiones</h5>
-        <p class="card-text">Usa Drag & Drop para controlar restricciones.</p>
-      </div>
-    </div>
-  </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Definir exclusiones</h5>
+                    <p class="card-text">Usa Drag & Drop para controlar restricciones.</p>
+                </div>
+                </div>
+            </div>
 
-  <div class="col-12 col-sm-6 col-lg-4">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Sortear automáticamente</h5>
-        <p class="card-text">Algoritmo dinámico respetando todas las reglas.</p>
-      </div>
-    </div>
-  </div>
-</div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sortear automáticamente</h5>
+                    <p class="card-text">Algoritmo dinámico respetando todas las reglas.</p>
+                </div>
+                </div>
+            </div>
+            </div>
 
         </div>
     </section>
