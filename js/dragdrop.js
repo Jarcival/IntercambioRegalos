@@ -53,6 +53,43 @@ document.addEventListener("DOMContentLoaded", () => {
         return organizador && participantesFinales.length >= 2 && presupuesto && celebracion && fecha;
     }
 
+    // Exponer la función de validación para otros scripts
+    window.validarCamposCompletos = validarCamposCompletos;
+
+    // Función que construye los datos del evento y los guarda redirigiendo
+    function construirDatos(exclusiones) {
+        const organizador = document.getElementById('nombreOrganizador').value;
+        const incluirOrganizador = document.getElementById('incluirOrganizador').checked;
+
+        let participantesFinales = [...listaNombres];
+        if (incluirOrganizador) {
+            if (!participantesFinales.includes(organizador)) {
+                participantesFinales.push(organizador);
+            }
+        } else {
+            participantesFinales = participantesFinales.filter(p => p !== organizador);
+        }
+
+        return {
+            organizador: organizador,
+            incluirOrganizador: incluirOrganizador,
+            participantes: participantesFinales,
+            exclusiones: exclusiones,
+            evento: {
+                presupuesto: document.getElementById('otroPresupuesto').value || presupuestoSeleccionado,
+                celebracion: document.getElementById('otraFestividad').value || festividadSeleccionada,
+                fecha: document.getElementById('otraFecha').value || fechaSeleccionada
+            }
+        };
+    }
+
+    // Guardar datos utility expuesto globalmente
+    window.guardarDatos = function(exclusiones) {
+        const data = construirDatos(exclusiones);
+        localStorage.setItem('intercambio_chicha', JSON.stringify(data));
+        window.location.href = "resumen.html";
+    }
+
     const paso6 = document.getElementById("step6");
     if (paso6) {
         const observer = new MutationObserver(mutations => {
