@@ -34,14 +34,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Detectar cambio de paso
-    const observer = new MutationObserver(() => {
-        if (!document.getElementById("step6").classList.contains("d-none")) {
-            cargarParticipantes();
-        }
-    });
+    // Función para validar si todos los campos están completos
+    function validarCamposCompletos() {
+        const organizador = document.getElementById('nombreOrganizador').value.trim();
+        const incluirOrganizador = document.getElementById('incluirOrganizador').checked;
+        let participantesFinales = [...listaNombres];
 
-    observer.observe(document.body, { subtree: true, attributes: true });
+        if (incluirOrganizador && organizador && !participantesFinales.includes(organizador)) {
+            participantesFinales.push(organizador);
+        } else if (!incluirOrganizador) {
+            participantesFinales = participantesFinales.filter(p => p !== organizador);
+        }
+
+        const presupuesto = document.getElementById('otroPresupuesto').value || presupuestoSeleccionado;
+        const celebracion = document.getElementById('otraFestividad').value || festividadSeleccionada;
+        const fecha = document.getElementById('otraFecha').value || fechaSeleccionada;
+
+        return organizador && participantesFinales.length >= 2 && presupuesto && celebracion && fecha;
+    }
+
+    const paso6 = document.getElementById("step6");
+    if (paso6) {
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(m => {
+                if (m.target === paso6 && m.attributeName === 'class') {
+                    if (!paso6.classList.contains("d-none")) {
+                        cargarParticipantes();
+                    }
+                }
+            });
+        });
+        observer.observe(paso6, { attributes: true });
+    }
+
 
  // ==========================
 // Drag start
@@ -83,7 +108,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Guardar exclusiones al finalizar
-    document.getElementById("btnFinalizar").addEventListener("click", () => {
+    document.getElementById("btnFinalizar").addEventListener("click", (e) => {
+
+        // Validar si todos los campos están completos
+        if (!validarCamposCompletos()) {
+            
+            if (window.Swal) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campos incompletos',
+                    text: 'Por favor, completa todos los campos obligatorios antes de continuar.',
+                    confirmButtonText: 'Entendido'
+                });
+            } else {
+                alert("Por favor, completa todos los campos obligatorios antes de continuar.");
+            }
+            return;
+        }
 
         const organizador = document.getElementById('nombreOrganizador').value;
         const incluirOrganizador = document.getElementById('incluirOrganizador').checked;

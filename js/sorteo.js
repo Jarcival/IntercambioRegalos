@@ -51,7 +51,7 @@ function realizarSorteo(){
     return asignaciones;
 }
 
-/* ---------- PARTE VISUAL DEL SORTEO ---------- */
+///PARTE VISUAL DEL SORTEO
 
 function mostrarParticipantes(){
 
