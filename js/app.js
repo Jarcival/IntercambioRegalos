@@ -22,9 +22,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // Botones "Siguiente"
     document.querySelectorAll('.btn-next').forEach(btn => {
         btn.addEventListener('click', () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
+            // Si estamos en el paso de fecha (index 4) preguntamos por exclusiones
+            if (currentStep === 4) {
+                const manejarDecision = (quieroExclusiones) => {
+                    if (quieroExclusiones) {
+                        currentStep++;
+                        showStep(currentStep);
+                    } else {
+                        // Validar campos antes de guardar
+                        if (window.validarCamposCompletos && !window.validarCamposCompletos()) {
+                            if (window.Swal) {
+                                Swal.fire('Faltan datos', 'Completa todos los campos antes de continuar', 'warning');
+                            } else {
+                                alert('Completa todos los campos antes de continuar');
+                            }
+                        } else {
+                            // Guardar sin exclusiones y redirigir
+                            if (window.guardarDatos) {
+                                window.guardarDatos([]);
+                            }
+                        }
+                    }
+                };
+
+                if (window.Swal) {
+                    Swal.fire({
+                        title: '¿Deseas configurar exclusiones?',
+                        text: 'Si no, iremos directamente al resumen',
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Sí, quiero exclusiones',
+                        cancelButtonText: 'No, gracias'
+                    }).then(result => {
+                        manejarDecision(result.isConfirmed);
+                    });
+                } else {
+                    const respuesta = confirm('¿Deseas configurar exclusiones?');
+                    manejarDecision(respuesta);
+                }
+            } else {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
             }
         });
     });
