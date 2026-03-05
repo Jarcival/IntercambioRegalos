@@ -92,10 +92,10 @@
     <section id="step4" class="step-section mb-5 d-none">
         <h3 class="text-primary-chicha mb-3">¿Qué festividad?</h3>
         <div class="d-flex flex-wrap gap-2 mb-4" id="festividadOptions">
-            <button class="btn btn-outline-primary-chicha btn-budget">Navidad</button>
-            <button class="btn btn-outline-primary-chicha btn-budget">Año Nuevo</button>
-            <button class="btn btn-outline-primary-chicha btn-budget">Intercambio</button>
-            <button class="btn btn-outline-primary-chicha btn-budget">Dia del Amor y la amistad</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Navidad</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Año Nuevo</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Intercambio</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Dia del Amor y la amistad</button>
             <input type="text" id="otraFestividad" class="form-control d-inline-block w-auto" placeholder="Otra Festividad">
         </div>
         
@@ -123,15 +123,46 @@
         
         <div class="d-flex justify-content-between mt-4">
             <button type="button" class="btn btn-outline-secondary btn-prev"> Atrás</button>
-            <button id="btnContinuar" class="btn btn-mint text-white shadow">Finalizar</button>
+            <button type="button" class="btn btn-mint text-white btn-next">Siguiente </button>
         </div>
     </section>
+
+    <section id="step6" class="step-section mb-5 d-none">
+    <h3 class="text-primary-chicha mb-3">Exclusiones</h3>
+
+    <p class="mb-3">
+        Arrastra un participante sobre otro para indicar que no pueden regalarse entre sí.
+    </p>
+
+    <div class="row">
+
+        <!-- LISTA DRAG -->
+        <div class="col-12 col-md-6">
+            <h5>Participantes</h5>
+            <ul id="listaDrag" class="list-group"></ul>
+        </div>
+
+        <!-- EXCLUSIONES -->
+        <div class="col-12 col-md-6">
+            <h5>Exclusiones creadas</h5>
+            <ul id="listaExclusionesUI" class="list-group"></ul>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-outline-secondary btn-prev">Atrás</button>
+        <button id="btnFinalizar" class="btn btn-mint text-white shadow">
+            Finalizar
+        </button>
+    </div>
+</section>
 
 </div>
             </div>
         </div>
     </div>
-
+    <script src="js/dragdrop.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/app.js"></script>
 </body>

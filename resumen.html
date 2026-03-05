@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen - Regalos Chicha</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-light">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg shadow-sm bg-white">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary-custom" href="index.html">
+                Regalos <span class="text-coral">Chicha</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="container py-5">
+
+        <div class="row g-4">
+
+            <!-- INFORMACIÓN DEL EVENTO -->
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm p-4 h-100">
+                    <h3 class="text-primary-custom mb-4">Datos del Evento</h3>
+
+                    <p><strong>Organizador:</strong> <span id="organizador"></span></p>
+                    <p><strong>Celebración:</strong> <span id="celebracion"></span></p>
+                    <p><strong>Fecha:</strong> <span id="fecha"></span></p>
+                    <p><strong>Presupuesto:</strong> $<span id="presupuesto"></span></p>
+
+                    <hr>
+
+                    <h5 class="mt-4">Participantes</h5>
+                    <ul id="listaParticipantesResumen" class="list-group mb-3"></ul>
+
+                    <h5>Exclusiones</h5>
+                    <ul id="listaExclusiones" class="list-group"></ul>
+                </div>
+            </div>
+
+            <!-- LOGO -->
+            <div class="col-12 col-lg-6 text-center d-flex align-items-center">
+                <img src="assets/imgs/logo.png" 
+                     class="img-fluid rounded shadow-sm"
+                     alt="Logo Intercambio"
+                     style="max-width: 400px;">
+            </div>
+
+        </div>
+
+        <hr class="mt-4">
+
+        <div class="text-center mt-4">
+            <a href="sorteo.html" class="btn btn-mint text-white btn-lg px-5 shadow">
+                🎁 Ir al Sorteo
+            </a>
+        </div>
+    </div>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const data = JSON.parse(localStorage.getItem("intercambio_chicha"));
+
+            if (!data) {
+                alert("No hay datos del evento.");
+                window.location.href = "index.html";
+                return;
+            }
+
+            // Mostrar datos principales
+            document.getElementById("organizador").textContent = data.organizador;
+            document.getElementById("celebracion").textContent = data.evento.celebracion || "No especificado";
+            document.getElementById("fecha").textContent = data.evento.fecha;
+            document.getElementById("presupuesto").textContent = data.evento.presupuesto;
+
+            // Participantes
+            const listaParticipantes = document.getElementById("listaParticipantesResumen");
+            data.participantes.forEach(p => {
+                listaParticipantes.innerHTML += `
+                    <li class="list-group-item">${p}</li>
+                `;
+            });
+
+            // Exclusiones
+            const listaExclusiones = document.getElementById("listaExclusiones");
+
+            if (data.exclusiones && data.exclusiones.length > 0) {
+                data.exclusiones.forEach(ex => {
+                    listaExclusiones.innerHTML += `
+                        <li class="list-group-item">
+                            ${ex.de} no puede regalar a ${ex.noPuede}
+                        </li>
+                    `;
+                });
+            } else {
+                listaExclusiones.innerHTML = `
+                    <li class="list-group-item text-muted">
+                        No hay exclusiones registradas
+                    </li>
+                `;
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

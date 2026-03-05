@@ -87,3 +87,106 @@
     background-color:  #3f67ba;;
     color: white;
 }
+
+#participantesSorteo .active{
+    background-color:#00BFA5;
+    color:white;
+    transform:scale(1.05);
+    transition:0.2s;
+}
+
+#resultadoSorteo .card{
+    border-left:6px solid #FFD54F;
+}
+
+/* =========================
+   PARTICIPANTES (DRAG)
+   ========================= */
+
+#listaDrag li{
+cursor: grab;
+transition: all .2s ease;
+border-radius: 8px;
+margin-bottom: 6px;
+border: 1px solid #E0E0E0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:500;
+}
+
+/* efecto hover */
+
+#listaDrag li:hover{
+background:#E3F2FD;
+transform:scale(1.02);
+box-shadow:0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* icono visual de arrastrar */
+
+#listaDrag li::after{
+content:"⇄";
+font-size:18px;
+opacity:.4;
+}
+
+/* cuando se arrastra */
+
+#listaDrag li:active{
+cursor: grabbing;
+background:#81D4FA;
+color:#0d3b66;
+}
+
+
+/* =========================
+   EXCLUSIONES
+   ========================= */
+
+#listaExclusionesUI li{
+border-radius:8px;
+border-left:5px solid #FF6F61;
+background:#FFF5F4;
+margin-bottom:6px;
+font-weight:500;
+transition:all .2s ease;
+}
+
+/* animación cuando aparece */
+
+#listaExclusionesUI li{
+animation:aparecer .25s ease;
+}
+
+@keyframes aparecer{
+0%{
+opacity:0;
+transform:translateY(5px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+
+/* =========================
+   CONTENEDORES
+   ========================= */
+
+#listaDrag{
+background:#F8FBFF;
+padding:10px;
+border-radius:10px;
+border:2px dashed #81D4FA;
+min-height:120px;
+}
+
+#listaExclusionesUI{
+background:#FFF9F8;
+padding:10px;
+border-radius:10px;
+border:2px dashed #FFB4AE;
+min-height:120px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura - Regalos Chicha</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    
+    
+</head>
+
+
+<body class="bg-pastel-blue">
+<div class="container mt-5">
+
+    <h2 class="text-center text-primary-chicha mb-4">
+        🎁 Sorteo del Intercambio
+    </h2>
+
+    <p class="text-center">
+        Presiona el botón para realizar el sorteo automático respetando exclusiones.
+    </p>
+
+    <div class="text-center mb-4">
+        <button id="btnSortear" class="btn btn-mint text-white btn-lg">
+            Realizar Sorteo
+        </button>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-5">
+            <h4 class="text-center mb-3">Participantes</h4>
+            <ul id="participantesSorteo" class="list-group"></ul>
+        </div>
+
+        <div class="col-md-7">
+            <h4 class="text-center mb-3">Resultados</h4>
+            <div id="resultadoSorteo"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/sorteo.js"></script>
+</body>
+</html>
