@@ -1,5 +1,6 @@
 let listaNombres = [];
 let presupuestoSeleccionado = 0;
+let festividadSeleccionada = '';
 let fechaSeleccionada = '';
 
 // logica para manejar los pasos del formulario
@@ -61,11 +62,11 @@ function actualizarListaUI() {
     ul.innerHTML = '';
     listaNombres.forEach((nombre, index) => {
         ul.innerHTML += `
-            <li class="list-group-item d-flex justify-content-between align-items-center ">
-                <span><i class=" text-primary"></i>${nombre}</span>
-                <button type="button" class="btn btn-danger" onclick="eliminar(${index})">
-                    <i >X</i>
-                </button>
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                draggable="true"
+                data-nombre="${nombre}">
+                <span>${nombre}</span>
+                <button type="button" class="btn btn-danger" onclick="eliminar(${index})">X</button>
             </li>
         `;
     });
@@ -85,6 +86,21 @@ document.querySelectorAll('.btn-budget').forEach(btn => {
         document.getElementById('otroPresupuesto').value = '';
     });
 }); 
+
+//Manejo festividad
+document.querySelectorAll('.btn-festividad').forEach(btn => {
+    btn.addEventListener('click', function(){
+        
+        document.querySelectorAll('.btn-festividad').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        
+        festividadSeleccionada = this.textContent.trim(); 
+
+        
+        document.getElementById('otraFestividad').value = '';
+    });
+})
 
 //Manejo de fecha
 function generarFechasSugeridas() {
