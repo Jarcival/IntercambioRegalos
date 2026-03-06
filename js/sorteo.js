@@ -110,7 +110,7 @@ function mostrarResultados(){
 
         card.innerHTML = `
             <h5 class="text-center">
-                🎁 <strong>${r.de}</strong> regala a
+                <strong>${r.de}</strong> regala a
                 <span style="color:#FF6F61">${r.para}</span>
             </h5>
         `;
