@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura - Regalos Chicha</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    
+    
+</head>
+
+
+<body class="bg-pastel-blue">
+
+    <nav class="navbar navbar-expand-lg shadow-sm mb-4" style="background-color: #ffffff;" data-bs-theme="light">
+        <div class="container">
+            
+            <a class="navbar-brand fw-bold text-primary" href="index.html">
+            <i class="me-2"></i>Regalos <span class="text-primary-chicha">Chicha</span>
+            </a>
+
+            <!-- Boton para colapsar en pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu"  aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú -->
+            <div id="navMenu" class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#productos">Juan Daniel</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#contacto">Jean Paulo</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mb-5 ">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg rounded-4 p-4">
+    
+    <section id="step1" class="step-section mb-5">
+        <h3 class="text-primary-chicha mb-3">¿Quién organiza?</h3>
+        <div class="mb-3">
+            <input type="text" id="nombreOrganizador" class="form-control form-control-lg border-2" placeholder="Tu nombre aquí">
+        </div>
+        <div class="form-check form-switch mb-4">
+            <input class="form-check-input" type="checkbox" id="incluirOrganizador" checked>
+            <label class="form-check-label" for="incluirOrganizador">Incluirme en el intercambio</label>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-mint text-white btn-next">Siguiente </button>
+        </div>
+    </section>
+
+    <section id="step2" class="step-section mb-5 d-none">
+        <h3 class="text-primary-chicha mb-3">Participantes</h3>
+        <div class="input-group mb-3">
+            <input type="text" id="inputParticipante" class="form-control" placeholder="Nombre del participante">
+            <button class="btn btn-mint text-white" type="button" id="btnAgregar">Agregar</button>
+        </div>
+        <ul class="list-group mb-4" id="listaParticipantes"></ul>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-secondary btn-prev"> Atrás</button>
+            <button type="button" class="btn btn-mint text-white btn-next">Siguiente </button>
+        </div>
+    </section>
+
+    <section id="step3" class="step-section mb-5 d-none">
+        <h3 class="text-primary-chicha mb-3">¿Cuánto gastar?</h3>
+        <div class="d-flex flex-wrap gap-2 mb-4" id="presupuestoOptions">
+            <button class="btn btn-outline-primary-chicha btn-budget" data-amount="100">$100</button>
+            <button class="btn btn-outline-primary-chicha btn-budget" data-amount="300">$300</button>
+            <button class="btn btn-outline-primary-chicha btn-budget" data-amount="500">$500</button>
+            <input type="number" id="otroPresupuesto" class="form-control d-inline-block w-auto" placeholder="Otra cantidad">
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-outline-secondary btn-prev"> Atrás</button>
+            <button type="button" class="btn btn-mint text-white btn-next">Siguiente </button>
+        </div>
+    </section>
+
+    <section id="step4" class="step-section mb-5 d-none">
+        <h3 class="text-primary-chicha mb-3">¿Qué festividad?</h3>
+        <div class="d-flex flex-wrap gap-2 mb-4" id="festividadOptions">
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Navidad</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Año Nuevo</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Intercambio</button>
+            <button type="button" class="btn btn-outline-primary-chicha btn-festividad">Dia del Amor y la amistad</button>
+            <input type="text" id="otraFestividad" class="form-control d-inline-block w-auto" placeholder="Otra Festividad">
+        </div>
+        
+        <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-outline-secondary btn-prev"> Atrás</button>
+            <button type="button" class="btn btn-mint text-white btn-next">Siguiente </button>
+        </div>
+    </section>
+
+    <section id="step5" class="step-section mb-5 d-none">
+        <h3 class="text-primary-chicha mb-3">Fecha del intercambio</h3>
+        <div class="d-flex flex-wrap gap-2 mb-4" id="fechaOptions">
+            <p >Selecciona una de las fechas sugeridas o elige una en el calendario:</p>
+
+            <!-- Logica para mostrar fechas cercanas al dia de hoy -->
+            <div class="d-flex flex-column gap-2 " id="opcionesFechas">
+            </div>
+            
+            <div class="mt-4 mb-4">
+                <p>Otra fecha</p>
+                <input type="date" id="otraFecha" class="form-control form-control-lg border-2">
+            </div>
+            
+        </div>
+        
+        <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-outline-secondary btn-prev"> Atrás</button>
+            <button type="button" class="btn btn-mint text-white btn-next">Siguiente </button>
+        </div>
+    </section>
+
+    <section id="step6" class="step-section mb-5 d-none">
+    <h3 class="text-primary-chicha mb-3">Exclusiones</h3>
+
+    <p class="mb-3">
+        Arrastra un participante sobre otro para indicar que no pueden regalarse entre sí.
+    </p>
+
+    <div class="row">
+
+        <!-- LISTA DRAG -->
+        <div class="col-12 col-md-6">
+            <h5>Participantes</h5>
+            <ul id="listaDrag" class="list-group"></ul>
+        </div>
+
+        <!-- EXCLUSIONES -->
+        <div class="col-12 col-md-6">
+            <h5>Exclusiones creadas</h5>
+            <ul id="listaExclusionesUI" class="list-group"></ul>
+        </div>
+
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <button type="button" class="btn btn-outline-secondary btn-prev">Atrás</button>
+        <button id="btnFinalizar" class="btn btn-mint text-white shadow">
+            Finalizar
+        </button>
+    </div>
+</section>
+
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/dragdrop.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
